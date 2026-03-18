@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileVault — Get Paid Before You Deliver</title>
+    <meta name="description" content="FileVault locks your freelance deliverables behind payment. Send a link, your client pays, files unlock instantly. No more chasing invoices.">
+    <meta property="og:title" content="FileVault — Get Paid Before You Deliver. Every Time.">
+    <meta property="og:description" content="Lock your files behind payment. Send a link, client pays, files unlock instantly.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1A1F36;
+            --navy-light: #252B48;
+            --accent: #6C63FF;
+            --accent-glow: rgba(108, 99, 255, 0.15);
+            --white: #FFFFFF;
+            --off-white: #F7F7FB;
+            --gray-100: #E8E8F0;
+            --gray-400: #8892A0;
+            --gray-600: #5A6072;
+            --text: #1A1F36;
+            --green: #10B981;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 31, 54, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-cta {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--white);
+            background: var(--accent);
+            border: none;
+            padding: 0.55rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--navy);
+            color: var(--white);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(108, 99, 255, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 30%, rgba(108, 99, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; max-width: 720px; margin: 0 auto; }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--gray-400);
+            max-width: 540px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--accent);
+            padding: 0.9rem 2.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(108, 99, 255, 0.45);
+        }
+
+        .hero-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .hero-note strong { color: var(--green); }
+
+        /* SECTIONS */
+        section { padding: 5.5rem 2rem; }
+
+        .container { max-width: 1040px; margin: 0 auto; }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* PROBLEM */
+        .problem { background: var(--off-white); }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 12px;
+            padding: 2rem 1.75rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(26, 31, 54, 0.06);
+        }
+
+        .problem-icon {
+            width: 44px;
+            height: 44px;
+            background: #FEE2E2;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.2rem;
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .problem-card p {
+            font-size: 0.92rem;
+            color: var(--gray-600);
+            line-height: 1.65;
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works { background: var(--white); }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 15%;
+            width: 70%;
+            height: 2px;
+            background: var(--gray-100);
+        }
+
+        .step { text-align: center; position: relative; }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: var(--navy);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.65;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* PRICING */
+        .pricing { background: var(--off-white); }
+
+        .pricing-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 2.5rem;
+            min-width: 300px;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(108, 99, 255, 0.08);
+        }
+
+        .pricing-amount {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.03em;
+        }
+
+        .pricing-amount span {
+            font-size: 1.25rem;
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+
+        .pricing-tag {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .pricing-detail {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .pricing-points { flex: 1; }
+
+        .pricing-points .comparison {
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+        }
+
+        .comparison-row:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .comparison-row .label { font-size: 0.9rem; color: var(--gray-400); }
+        .comparison-row .value { font-size: 0.95rem; font-weight: 600; }
+        .comparison-row .value.bad { color: #EF4444; }
+        .comparison-row .value.good { color: var(--green); }
+
+        .pricing-trial {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .pricing-trial strong {
+            color: var(--text);
+        }
+
+        /* WAITLIST / SIGNUP */
+        .waitlist {
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .waitlist::before {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            right: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(ellipse, rgba(108, 99, 255, 0.07) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .waitlist .section-title { color: var(--white); }
+        .waitlist .section-subtitle {
+            color: var(--gray-400);
+            margin: 0 auto 2.5rem;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .signup-form input {
+            flex: 1;
+            padding: 0.9rem 1.25rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.06);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .signup-form input::placeholder { color: var(--gray-400); }
+
+        .signup-form input:focus {
+            border-color: var(--accent);
+            background: rgba(108, 99, 255, 0.06);
+        }
+
+        .signup-form button {
+            padding: 0.9rem 1.75rem;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .signup-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(108, 99, 255, 0.4);
+        }
+
+        .signup-note {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .success-msg {
+            display: none;
+            font-size: 1.05rem;
+            color: var(--green);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--gray-400);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero { padding: 8rem 1.5rem 4rem; }
+            .hero p { font-size: 1rem; }
+
+            section { padding: 3.5rem 1.5rem; }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .steps::before { display: none; }
+
+            .pricing-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .pricing-card { min-width: unset; width: 100%; }
+
+            .signup-form {
+                flex-direction: column;
+            }
+
+            .signup-form button { width: 100%; }
+
+            nav { padding: 0.75rem 1.25rem; }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .animate-d1 { animation-delay: 0.1s; }
+        .animate-d2 { animation-delay: 0.2s; }
+        .animate-d3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">File<span>Vault</span></a>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animate">Get Paid Before You Deliver. <em>Every Time.</em></h1>
+            <p class="animate animate-d1">FileVault locks your files behind payment. Send a link, your client pays, files unlock instantly. No more chasing invoices.</p>
+            <a href="#waitlist" class="hero-cta animate animate-d2">Join the Early Access Waitlist</a>
+            <p class="hero-note animate animate-d3"><strong>First 20 users</strong> get locked in at $9/month for life.</p>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="problem">
+        <div class="container">
+            <div class="section-label">The Problem</div>
+            <h2 class="section-title">Sound Familiar?</h2>
+            <p class="section-subtitle">Every freelancer has lived this cycle. You do the work. You deliver. Then you wait. And wait.</p>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😶</div>
+                    <h3>Client Goes Silent</h3>
+                    <p>You deliver the final files. Days pass. No payment. No response. You have zero leverage because the work is already in their hands.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📧</div>
+                    <h3>Endless Follow-Ups</h3>
+                    <p>You spend hours writing polite emails that all say the same thing: please pay me for the work I already did. It's exhausting and awkward.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚖️</div>
+                    <h3>Leverage Gone</h3>
+                    <p>The moment you hand over the deliverables, the power shifts entirely to the client. You're no longer negotiating. You're hoping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-label">How It Works</div>
+            <h2 class="section-title">Three Steps. Zero Anxiety.</h2>
+            <p class="section-subtitle">FileVault replaces hope with infrastructure.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Upload Your Files</h3>
+                    <p>Upload your finished deliverables and enter the amount your client owes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Send the Link</h3>
+                    <p>Your client gets a secure link showing the files and the amount due. No account needed on their end.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>They Pay, Files Unlock</h3>
+                    <p>Payment goes through Stripe directly to your bank account. Files unlock instantly for download.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-label">Pricing</div>
+            <h2 class="section-title">Simple Pricing. No Hidden Fees.</h2>
+            <p class="section-subtitle">We charge a flat monthly fee. We never take a cut of your earnings.</p>
+
+            <div class="pricing-content">
+                <div class="pricing-card">
+                    <div class="pricing-amount">$19<span>/month</span></div>
+                    <div class="pricing-tag">No percentage. Ever.</div>
+                    <p class="pricing-detail">14-day free trial.<br>No credit card required.</p>
+                </div>
+
+                <div class="pricing-points">
+                    <div class="comparison">
+                        <div class="comparison-row">
+                            <span class="label">You deliver $5,000/month of work</span>
+                            <span></span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="label">Other platforms (5% fee)</span>
+                            <span class="value bad">-$250/month</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="label">FileVault (flat fee)</span>
+                            <span class="value good">-$19/month</span>
+                        </div>
+                        <div class="comparison-row">
+                            <span class="label">You save</span>
+                            <span class="value good">$231/month</span>
+                        </div>
+                    </div>
+                    <p class="pricing-trial"><strong>The more you earn, the more you save.</strong> Our flat fee means your success doesn't cost you more. Other platforms punish you for growing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WAITLIST -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <div class="section-label" style="color: var(--accent);">Early Access</div>
+            <h2 class="section-title">Join the Waitlist</h2>
+            <p class="section-subtitle">We're launching soon. Be the first to try FileVault and lock in early access pricing.</p>
+
+            <form class="signup-form" id="signupForm">
+                <input type="email" id="emailInput" placeholder="Enter your email" required>
+                <button type="submit">Get Early Access</button>
+            </form>
+            <p class="signup-note">No spam. We'll only email you when we launch.</p>
+            <p class="success-msg" id="successMsg">You're on the list! We'll be in touch soon.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 FileVault &mdash; Built for freelancers who are tired of working for free.</p>
+    </footer>
+
+    <script>
+        // Form handling — stores to localStorage as a simple solution
+        // Replace this with your preferred email service (Mailchimp, ConvertKit, Google Forms, etc.)
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+
+            // Store locally (replace with API call to your email service)
+            const emails = JSON.parse(localStorage.getItem('filevault_waitlist') || '[]');
+            emails.push({ email: email, date: new Date().toISOString() });
+            localStorage.setItem('filevault_waitlist', JSON.stringify(emails));
+
+            // Show success
+            this.style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
+            document.querySelector('.signup-note').style.display = 'none';
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.problem-card, .step, .pricing-card, .comparison').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
